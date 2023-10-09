@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-react
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-react
+  template:
+    metadata:
+      labels:
+        app: my-react
+    spec:
+      containers:
+        - name: my-react
+          image: registry.digitalocean.com/enigmacamp/simple-react:16 # {"$imagepolicy": "flux-system:simple-react-policy"}
+          envFrom:
+            - configMapRef:
+                name: react-config
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginx-default-conf
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: nginx-default-conf
+          configMap:
+            name: react-config
+            items:
+              - key: default.conf
+                path: default.conf
