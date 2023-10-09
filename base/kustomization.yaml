@@ -4,5 +4,6 @@ namespace: final-project
 
 resources:
   - ../module/registry-secret.yaml
+  - namespace.yaml
   - backend
   - frontend
