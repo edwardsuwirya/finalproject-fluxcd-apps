@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-react
-          image: registry.digitalocean.com/enigmacamp/simple-react:16 # {"$imagepolicy": "flux-system:simple-react-policy"}
+          image: registry.digitalocean.com/enigmacamp/simple-react:16 # {"$imagepolicy": "final-project:simple-react-policy"}
           envFrom:
             - configMapRef:
                 name: react-config
